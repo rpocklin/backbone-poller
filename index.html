@@ -97,10 +97,7 @@ Returns a poller instance
 Triggers a 'start' events unless options.silent is set to true
 </pre>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">start</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="k">this</span><span class="p">.</span><span class="nx">active</span><span class="p">())</span> <span class="p">{</span>
-        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">options</span><span class="p">.</span><span class="nx">silent</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">silent</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">);</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">active</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
         <span class="nx">run</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
       <span class="p">}</span>
@@ -113,14 +110,9 @@ Aborts any running XHR call
 Returns a poller instance
 Triggers a 'stop' events unless options.silent is set to true
 </pre>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">stop</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">options</span><span class="p">.</span><span class="nx">silent</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;stop&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">);</span>
-      <span class="p">}</span>
+      <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">silent</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;stop&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">);</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">active</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">xhr</span> <span class="o">&amp;&amp;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">abort</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
-      <span class="p">}</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">xhr</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">abort</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">xhr</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
       <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeoutId</span><span class="p">);</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">timeoutId</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
