@@ -154,6 +154,9 @@ Retunrs a bollean for poller status
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">validate</span><span class="p">(</span><span class="nx">poller</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">poller</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">active</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">;</span>
+    <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">poller</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">condition</span><span class="p">(</span><span class="nx">poller</span><span class="p">.</span><span class="nx">model</span><span class="p">)</span> <span class="o">!==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">poller</span><span class="p">.</span><span class="nx">stop</span><span class="p">({</span><span class="nx">silent</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
       <span class="nx">poller</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;complete&#39;</span><span class="p">,</span> <span class="nx">poller</span><span class="p">.</span><span class="nx">model</span><span class="p">);</span>
